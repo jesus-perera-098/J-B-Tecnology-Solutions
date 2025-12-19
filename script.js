@@ -17,26 +17,24 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     console.log("Submit interceptado");
 
-    const data = {
+    // ⬇️ Formato CORRECTO para Google Apps Script (evita CORS)
+    const params = new URLSearchParams({
       name: form.name.value,
       company: form.company.value,
       email: form.email.value,
       phone: form.number.value,
       service: form.service.value,
       message: form.message.value
-    };
+    });
 
     try {
-      const response = await fetch(
+      await fetch(
         "https://script.google.com/macros/s/AKfycbwWoAf3KcVxhNRl29JAlDuc7D11qVzEmukLfKK4U0HzZwmCJXD3q9NW4TI_Ofss0kXr2g/exec",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
+          body: params
         }
       );
-
-      if (!response.ok) throw new Error("Error HTTP");
 
       messageBox.textContent =
         "Mensaje enviado correctamente. Te contactaremos pronto.";
@@ -51,3 +49,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
