@@ -376,3 +376,40 @@ body{
 .word {
   color:  #0ea5a4; /* o el color que quieras */
 }
+
+
+/* =====================
+   TOAST MENSAJE FORM
+===================== */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #111827;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .4s ease;
+  z-index: 9999;
+  font-size: 0.95rem;
+  max-width: 320px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.success {
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+}
+
+.toast.error {
+  background: linear-gradient(90deg, #dc2626, #ef4444);
+}
+
+
