@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbwWoAf3KcVxhNRl29JAlDuc7D11qVzEmukLfKK4U0HzZwmCJXD3q9NW4TI_Ofss0kXr2g/exec",
+        "https://script.google.com/macros/s/AKfycby_6HVbVFBmhga-pyNUjlTIXtfsZJGoyMxmFIANPCRvbLgbndNkBw54xQcSD1-1SqnYSQ/exec",
         {
           method: "POST",
           body: params
@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
