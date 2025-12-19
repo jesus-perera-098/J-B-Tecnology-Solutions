@@ -6,18 +6,28 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("JS cargado correctamente");
 
   const form = document.getElementById("contactForm");
-  const messageBox = document.getElementById("formMessage");
+  const toast = document.getElementById("toast");
 
   if (!form) {
     console.error("No se encontró el formulario");
     return;
   }
 
+  // 👉 Función para mostrar toast
+  function showToast(message, type = "success") {
+    toast.textContent = message;
+    toast.className = `toast show ${type}`;
+
+    setTimeout(() => {
+      toast.className = "toast";
+    }, 4000);
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     console.log("Submit interceptado");
 
-    // ⬇️ Formato CORRECTO para Google Apps Script (evita CORS)
+    // Formato compatible con Google Apps Script
     const params = new URLSearchParams({
       name: form.name.value,
       company: form.company.value,
@@ -36,19 +46,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       );
 
-      messageBox.textContent =
-        "Mensaje enviado correctamente. Te contactaremos pronto.";
-      messageBox.className = "form-message success";
+      showToast(
+        "Mensaje enviado correctamente. Te contactaremos pronto ✅",
+        "success"
+      );
+
       form.reset();
 
     } catch (error) {
       console.error(error);
-      messageBox.textContent =
-        "Hubo un error al enviar el mensaje. Intenta más tarde.";
-      messageBox.className = "form-message error";
+
+      showToast(
+        "Error al enviar el mensaje ❌ Intenta más tarde",
+        "error"
+      );
     }
   });
 });
+
 
 
 
